@@ -1,13 +1,13 @@
 import { ChangeEventHandler } from 'react'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 
-import { textState } from './features/text'
+import { charCountState, textState } from './features/text'
 
 export const CharacterCounter = () => {
   return (
     <div>
       <TextInput />
-      {/* <CharacterCount /> */}
+      <CharacterCount />
     </div>
   )
 }
@@ -26,4 +26,10 @@ const TextInput = () => {
       Echo: {text}
     </div>
   )
+}
+
+const CharacterCount = () => {
+  const charCount = useRecoilValue(charCountState)
+
+  return <>Character Count: {charCount}</>
 }
